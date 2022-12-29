@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="wrapper">
-      <button-component :type="button" :link="true">Напомнить PIN-код</button-component>
+      <button-component :type="button" link="https://vuejs.org/">Напомнить PIN-код</button-component>
     </div>
 
     <div class="wrapper">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="wrapper">
-      <button-component :time="180">Repeat letter</button-component>
+      <button-component :time="3">Repeat letter</button-component>
     </div>
 
     <div class="wrapper">

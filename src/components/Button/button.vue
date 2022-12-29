@@ -1,5 +1,5 @@
 <template>
-  <a href="#" v-if="link" class="link"><slot /></a>
+  <a :href="link" v-if="link" class="link"><slot /></a>
   <button
     :class="['button', color, time && 'button--time', icon && 'button--icon']"
     :disabled="disabled"
@@ -61,6 +61,8 @@ export default defineComponent({
           --this.counter;
           this.countDown();
         }, 1000);
+      } else if (this.counter === 0) {
+        this.counter = this.time;
       }
     },
   },
