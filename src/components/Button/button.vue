@@ -2,7 +2,7 @@
   <a :href="link" v-if="link" class="link"><slot /></a>
   <button
     :class="['button', color, time && 'button--time', icon && 'button--icon']"
-    :disabled="disabled"
+    :disabled="disabled || this.active"
     :type="type"
     @click="countDown"
     v-else
@@ -32,6 +32,7 @@ export default defineComponent({
   data() {
     return {
       counter: this.time,
+      active: false,
       displaySeconds: 0,
       displayMinutes: 0,
     };
@@ -48,7 +49,8 @@ export default defineComponent({
   },
   methods: {
     countDown() {
-      if (this.counter && this.counter > 0) {
+      if (this.counter >= 0) {
+        this.active = true
         return setTimeout(() => {
           this.displayMinutes = Math.floor(this.counter / 60);
           this.displaySeconds = this.counter % 60;
@@ -61,8 +63,9 @@ export default defineComponent({
           --this.counter;
           this.countDown();
         }, 1000);
-      } else if (this.counter === 0) {
+      } else if (this.counter === -1) {
         this.counter = this.time;
+        this.active = false
       }
     },
   },
@@ -145,6 +148,7 @@ export default defineComponent({
 .button:disabled {
   background-color: #efefef;
   color: #767679;
+  opacity: .7;
 }
 
 .timer {
