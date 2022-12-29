@@ -17,7 +17,7 @@
     </div>
 
     <div class="wrapper">
-      <button-component :time="3">Repeat letter</button-component>
+      <button-component :time="180">Repeat letter</button-component>
     </div>
 
     <div class="wrapper">
